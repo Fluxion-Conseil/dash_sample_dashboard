@@ -179,26 +179,6 @@ def update_birst_category(selected_rows, end_date):
 @app.callback(Output('output-container-date-picker-range-ga-category', 'children'),
 	[Input('my-date-picker-range-ga-category', 'start_date'),
 	 Input('my-date-picker-range-ga-category', 'end_date')])
-def update_output(start_date, end_date):
-	string_prefix = 'You have selected '
-	if start_date is not None:
-		start_date = dt.strptime(start_date, '%Y-%m-%d')
-		start_date_string = start_date.strftime('%B %d, %Y')
-		string_prefix = string_prefix + 'a Start Date of ' + start_date_string + ' | '
-	if end_date is not None:
-		end_date = dt.strptime(end_date, '%Y-%m-%d')
-		end_date_string = end_date.strftime('%B %d, %Y')
-		days_selected = (end_date - start_date).days
-		prior_start_date = start_date - timedelta(days_selected + 1)
-		prior_start_date_string = datetime.strftime(prior_start_date, '%B %d, %Y')
-		prior_end_date = end_date - timedelta(days_selected + 1)
-		prior_end_date_string = datetime.strftime(prior_end_date, '%B %d, %Y')
-		string_prefix = string_prefix + 'End Date of ' + end_date_string + ', for a total of ' + str(days_selected + 1) + ' Days. The prior period Start Date was ' + \
-		prior_start_date_string + ' | End Date: ' + prior_end_date_string + '.'
-	if len(string_prefix) == len('You have selected: '):
-		return 'Select a date to see it displayed here'
-	else:
-		return string_prefix
 
 # Callback and update first data table
 @app.callback(Output('datatable-ga-category', 'data'),
@@ -285,26 +265,6 @@ def update_ga_category(selected_rows, end_date):
 @app.callback(Output('output-container-date-picker-range-paid-search', 'children'),
 	[Input('my-date-picker-range-paid-search', 'start_date'),
 	 Input('my-date-picker-range-paid-search', 'end_date')])
-def update_output(start_date, end_date):
-	string_prefix = 'You have selected '
-	if start_date is not None:
-		start_date = dt.strptime(start_date, '%Y-%m-%d')
-		start_date_string = start_date.strftime('%B %d, %Y')
-		string_prefix = string_prefix + 'a Start Date of ' + start_date_string + ' | '
-	if end_date is not None:
-		end_date = dt.strptime(end_date, '%Y-%m-%d')
-		end_date_string = end_date.strftime('%B %d, %Y')
-		days_selected = (end_date - start_date).days
-		prior_start_date = start_date - timedelta(days_selected + 1)
-		prior_start_date_string = datetime.strftime(prior_start_date, '%B %d, %Y')
-		prior_end_date = end_date - timedelta(days_selected + 1)
-		prior_end_date_string = datetime.strftime(prior_end_date, '%B %d, %Y')
-		string_prefix = string_prefix + 'End Date of ' + end_date_string + ', for a total of ' + str(days_selected + 1) + ' Days. The prior period Start Date was ' + \
-		prior_start_date_string + ' | End Date: ' + prior_end_date_string + '.'
-	if len(string_prefix) == len('You have selected: '):
-		return 'Select a date to see it displayed here'
-	else:
-		return string_prefix
 
 # Callback and update first data table
 @app.callback(Output('datatable-paid-search', 'data'),
